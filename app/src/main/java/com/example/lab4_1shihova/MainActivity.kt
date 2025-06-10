@@ -36,5 +36,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        questionTextView = findViewById(R.id.questionTextView)
+        trueButton = findViewById(R.id.trueButton)
+        falseButton = findViewById(R.id.falseButton)
+        nextButton = findViewById(R.id.nextButton)
+
+
+        nextButton.isEnabled = false
+
+
+        trueButton.setOnClickListener { checkAnswer(true) }
+        falseButton.setOnClickListener { checkAnswer(false) }
+        nextButton.setOnClickListener { showNextQuestion() }
+
+
+        if (savedInstanceState != null) {
+            currentIndex = savedInstanceState.getInt("current_index", 0)
+            correctAnswers = savedInstanceState.getInt("correct_answers", 0)
+        }
+
     }
 }
